@@ -1,0 +1,65 @@
+// creating cmakelist and package files to a package write this :
+$ catkin_create_pkg --rosdistro noetic -s roscpp gemetry_msgs std_msgs -l BSD -m sohaib -a sohaib foobar
+// installing dependencies
+$ rosdep install turtlesim
+
+// yaml files 
+
+// the Network congiguration look like the following:
+// the ROS_MASTER_URI=https//192.168.0.100:11311
+// and the ROS_HOSTNAME=192.168.0.100
+
+// to work on raspberry pi from your pc
+$ ssh ubuntu@{IP Address of Raspberry PI}
+$ sudo apt-get update
+$ sudo apt-get upgrade
+$ wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_noetic_rpi.sh
+$ chmod 755 ./install_ros_noetic_rpi.sh
+$ bash ./install_ros_noetic_rpi.sh
+$ sudo apt install ros-noetic-rosserial-python ros-noetic-tf
+$ sudo apt install ros-noetic-hls-lfcd-lds-driver
+$ sudo apt install ros-noetic-turtlebot3-msgs
+$ sudo apt install ros-noetic-dynamixel-sdk
+$ cd ~/catkin_ws/src
+$ git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
+$ cd ~/catkin_ws/src/turtlebot3
+$ rm -r turtlebot3_description/ turtlebot3_teleop/ turtlebot3_navigation/ turtlebot3_slam/ turtlebot3_example/
+$ cd ~/catkin_ws/
+$ catkin_make -j1
+$ source ~/.bashrc
+$ rosrun turtlebot3_bringup create_udev_rules
+$ nano ~/.bashrc
+//export ROS_MASTER_URI=http://{IP_ADDRESS_OF_REMOTE_PC}:11311
+//export ROS_HOSTNAME={IP_ADDRESS_OF_RASPBERRY_PI_3}
+
+// LDS configuration on Raspberry Pi:
+$ sudo apt update
+$ sudo apt install libudev-dev
+$ cd ~/catkin_ws/src
+$ git clone -b develop https://github.com/ROBOTIS-GIT/ld08_driver.git
+$ cd ~/catkin_ws && catkin_make
+$ echo 'export LDS_MODEL=LDS-01' >> ~/.bashrc
+$ source ~/.bashrc
+
+
+image_width: 960
+image_height: 720
+camera_name: prosilica
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [851.145803, 0, 461.363994, 0, 853.429128, 362.519977, 0, 0, 1]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [0.092257, -0.273373, 0.000333, -0.000435, 0]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1, 0, 0, 0, 1, 0, 0, 0, 1]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [851.424927, 0, 459.501626, 0, 0, 858.864563, 362.178221, 0, 0, 0, 1, 0]
+
