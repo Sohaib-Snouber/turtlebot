@@ -1,14 +1,14 @@
 // creating cmakelist and package files to a package write this :
-$ catkin_create_pkg --rosdistro noetic -s roscpp gemetry_msgs std_msgs -l BSD -m sohaib -a sohaib foobar
+$ catkin_create_pkg --rosdistro noetic -s roscpp gemetry_msgs std_msgs -l BSD -m email -a username package_name
 // installing dependencies
 $ rosdep install turtlesim
-
+------------------------------------------------------
 // yaml files 
-
+------------------------------------------------------
 // the Network congiguration look like the following:
 // the ROS_MASTER_URI=https//192.168.0.100:11311
 // and the ROS_HOSTNAME=192.168.0.100
-
+----------------------------------------------------
 // to work on raspberry pi from your pc
 $ ssh ubuntu@{IP Address of Raspberry PI}
 $ sudo apt-get update
@@ -31,7 +31,7 @@ $ rosrun turtlebot3_bringup create_udev_rules
 $ nano ~/.bashrc
 //export ROS_MASTER_URI=http://{IP_ADDRESS_OF_REMOTE_PC}:11311
 //export ROS_HOSTNAME={IP_ADDRESS_OF_RASPBERRY_PI_3}
-
+---------------------------------------------
 // LDS configuration on Raspberry Pi:
 $ sudo apt update
 $ sudo apt install libudev-dev
@@ -40,8 +40,8 @@ $ git clone -b develop https://github.com/ROBOTIS-GIT/ld08_driver.git
 $ cd ~/catkin_ws && catkin_make
 $ echo 'export LDS_MODEL=LDS-01' >> ~/.bashrc
 $ source ~/.bashrc
-
-
+----------------------------------------------
+//Rasberry Pi Camera Parameters 
 image_width: 960
 image_height: 720
 camera_name: prosilica
@@ -63,3 +63,4 @@ projection_matrix:
   cols: 4
   data: [851.424927, 0, 459.501626, 0, 0, 858.864563, 362.178221, 0, 0, 0, 1, 0]
 
+-----------------------------------------------
