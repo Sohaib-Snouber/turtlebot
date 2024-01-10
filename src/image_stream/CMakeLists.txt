@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   cv_bridge
+  image_transport
 )
 find_package(OpenCV REQUIRED)
 
@@ -71,6 +72,7 @@ add_executable(images src/images.cpp)
 add_executable(bird_eye_view src/bird_eye_view.cpp)
 add_executable(top_view src/top_view.cpp)
 add_executable(corners src/corners.cpp)
+add_executable(BirdEyeView src/BirdEyeView.cpp)
 
 
 
@@ -101,6 +103,10 @@ target_link_libraries(top_view
   ${OpenCV_LIBRARIES}
  )
  target_link_libraries(corners
+ ${catkin_LIBRARIES}
+ ${OpenCV_LIBRARIES}
+)
+target_link_libraries(BirdEyeView
  ${catkin_LIBRARIES}
  ${OpenCV_LIBRARIES}
 )
