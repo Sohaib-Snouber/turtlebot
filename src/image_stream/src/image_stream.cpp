@@ -5,13 +5,28 @@
 #include <sensor_msgs/CompressedImage.h>
 
 
-
 void imageCallback(const sensor_msgs::CompressedImageConstPtr& msg)
 {
     try
     {
         cv_bridge::CvImagePtr cv_ptr;
         cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
+
+        // Define square parameters
+        int height = 720;
+        int width = 960;
+        int squareWidth = width/8;
+        int squareHight = height/10;
+        int center_box = width/2 - squareWidth/2;
+        int left_box = center_box - squareWidth;
+        int right_box = center_box + squareWidth;
+        
+        cv::circle(cv_ptr->image, cv::Point(width, height), 5, cv::Scalar(255), -1);
+
+        // Draw red squares at specific coordinates
+        cv::rectangle(cv_ptr->image, cv::Point(left_box , height - squareHight), cv::Point(center_box, height), cv::Scalar(0, 0, 255), -1);
+        cv::rectangle(cv_ptr->image, cv::Point(center_box, height - squareHight), cv::Point(right_box, height), cv::Scalar(0, 255, 0), -1);
+        cv::rectangle(cv_ptr->image, cv::Point(right_box, height - squareHight), cv::Point(right_box + squareWidth, height), cv::Scalar(255, 0, 0), -1);
 
         cv::imshow("Image", cv_ptr->image);
         cv::waitKey(1);
@@ -21,6 +36,7 @@ void imageCallback(const sensor_msgs::CompressedImageConstPtr& msg)
         ROS_ERROR("Could not convert from '%s' to 'bgr8'.", msg->format.c_str());
     }
 }
+
 
 int main(int argc, char **argv)
 {
@@ -35,3 +51,6 @@ int main(int argc, char **argv)
 
     cv::destroyAllWindows();
 }
+
+
+

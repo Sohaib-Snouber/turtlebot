@@ -90,6 +90,17 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -123,17 +134,6 @@ install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -181,6 +181,21 @@ sensor_msgs_generate_messages_cpp: image_stream/CMakeFiles/sensor_msgs_generate_
 sensor_msgs_generate_messages_cpp/fast:
 	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f image_stream/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make image_stream/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
 .PHONY : sensor_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+image_stream/CMakeFiles/FollowLine.dir/rule:
+	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 image_stream/CMakeFiles/FollowLine.dir/rule
+.PHONY : image_stream/CMakeFiles/FollowLine.dir/rule
+
+# Convenience name for target.
+FollowLine: image_stream/CMakeFiles/FollowLine.dir/rule
+
+.PHONY : FollowLine
+
+# fast build rule for target.
+FollowLine/fast:
+	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f image_stream/CMakeFiles/FollowLine.dir/build.make image_stream/CMakeFiles/FollowLine.dir/build
+.PHONY : FollowLine/fast
 
 # Convenience name for target.
 image_stream/CMakeFiles/top_view.dir/rule:
@@ -374,6 +389,33 @@ src/BirdEyeView.cpp.s:
 	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f image_stream/CMakeFiles/BirdEyeView.dir/build.make image_stream/CMakeFiles/BirdEyeView.dir/src/BirdEyeView.cpp.s
 .PHONY : src/BirdEyeView.cpp.s
 
+src/FollowLine.o: src/FollowLine.cpp.o
+
+.PHONY : src/FollowLine.o
+
+# target to build an object file
+src/FollowLine.cpp.o:
+	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f image_stream/CMakeFiles/FollowLine.dir/build.make image_stream/CMakeFiles/FollowLine.dir/src/FollowLine.cpp.o
+.PHONY : src/FollowLine.cpp.o
+
+src/FollowLine.i: src/FollowLine.cpp.i
+
+.PHONY : src/FollowLine.i
+
+# target to preprocess a source file
+src/FollowLine.cpp.i:
+	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f image_stream/CMakeFiles/FollowLine.dir/build.make image_stream/CMakeFiles/FollowLine.dir/src/FollowLine.cpp.i
+.PHONY : src/FollowLine.cpp.i
+
+src/FollowLine.s: src/FollowLine.cpp.s
+
+.PHONY : src/FollowLine.s
+
+# target to generate assembly for a file
+src/FollowLine.cpp.s:
+	cd /home/ubuntu/catkin_ws/build && $(MAKE) -f image_stream/CMakeFiles/FollowLine.dir/build.make image_stream/CMakeFiles/FollowLine.dir/src/FollowLine.cpp.s
+.PHONY : src/FollowLine.cpp.s
+
 src/bird_eye_view.o: src/bird_eye_view.cpp.o
 
 .PHONY : src/bird_eye_view.o
@@ -545,7 +587,9 @@ help:
 	@echo "... install/local"
 	@echo "... install"
 	@echo "... list_install_components"
+	@echo "... test"
 	@echo "... sensor_msgs_generate_messages_cpp"
+	@echo "... FollowLine"
 	@echo "... top_view"
 	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... sensor_msgs_generate_messages_nodejs"
@@ -560,10 +604,12 @@ help:
 	@echo "... bird_eye_view"
 	@echo "... install/strip"
 	@echo "... corners"
-	@echo "... test"
 	@echo "... src/BirdEyeView.o"
 	@echo "... src/BirdEyeView.i"
 	@echo "... src/BirdEyeView.s"
+	@echo "... src/FollowLine.o"
+	@echo "... src/FollowLine.i"
+	@echo "... src/FollowLine.s"
 	@echo "... src/bird_eye_view.o"
 	@echo "... src/bird_eye_view.i"
 	@echo "... src/bird_eye_view.s"

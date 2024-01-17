@@ -79,7 +79,7 @@ image_proc_test_rectify_EXTERNAL_OBJECTS =
 
 /home/ubuntu/catkin_ws/devel/lib/image_proc/image_proc_test_rectify: image_pipeline/image_proc/test/CMakeFiles/image_proc_test_rectify.dir/test_rectify.cpp.o
 /home/ubuntu/catkin_ws/devel/lib/image_proc/image_proc_test_rectify: image_pipeline/image_proc/test/CMakeFiles/image_proc_test_rectify.dir/build.make
-/home/ubuntu/catkin_ws/devel/lib/image_proc/image_proc_test_rectify: gtest/lib/libgtest.so
+/home/ubuntu/catkin_ws/devel/lib/image_proc/image_proc_test_rectify: gtest/lib/libgtestd.so
 /home/ubuntu/catkin_ws/devel/lib/image_proc/image_proc_test_rectify: /opt/ros/noetic/lib/libcamera_calibration_parsers.so
 /home/ubuntu/catkin_ws/devel/lib/image_proc/image_proc_test_rectify: /opt/ros/noetic/lib/libimage_transport.so
 /home/ubuntu/catkin_ws/devel/lib/image_proc/image_proc_test_rectify: /opt/ros/noetic/lib/libmessage_filters.so

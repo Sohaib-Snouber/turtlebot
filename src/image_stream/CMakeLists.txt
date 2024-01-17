@@ -73,6 +73,7 @@ add_executable(bird_eye_view src/bird_eye_view.cpp)
 add_executable(top_view src/top_view.cpp)
 add_executable(corners src/corners.cpp)
 add_executable(BirdEyeView src/BirdEyeView.cpp)
+add_executable(FollowLine src/FollowLine.cpp)
 
 
 
@@ -107,6 +108,10 @@ target_link_libraries(top_view
  ${OpenCV_LIBRARIES}
 )
 target_link_libraries(BirdEyeView
+ ${catkin_LIBRARIES}
+ ${OpenCV_LIBRARIES}
+)
+target_link_libraries(FollowLine
  ${catkin_LIBRARIES}
  ${OpenCV_LIBRARIES}
 )

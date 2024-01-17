@@ -4,6 +4,7 @@
   <!-- <rosparam command="load" file="$(find rosparam)/config/transformation_matrix.yaml" /> -->
   <!-- Start node 1 -->
   <node pkg="image_stream" type="BirdEyeView" name="node1" output="screen"/>
+  <node pkg="image_stream" type="FollowLine" name="node2" output="screen"/>
 
   <!--
    //Start node 1 

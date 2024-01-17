@@ -64,3 +64,4 @@ projection_matrix:
   data: [851.424927, 0, 459.501626, 0, 0, 858.864563, 362.178221, 0, 0, 0, 1, 0]
 
 -----------------------------------------------
+ROS_NAMESPACE=raspicam_node rosrun image_proc image_proc image_raw:=image _queue_size:=10
