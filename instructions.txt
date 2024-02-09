@@ -65,3 +65,120 @@ projection_matrix:
 
 -----------------------------------------------
 ROS_NAMESPACE=raspicam_node rosrun image_proc image_proc image_raw:=image _queue_size:=10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**** Calibrating ****
+mono pinhole calibration...
+D = [0.07753224603887068, -0.16784127100307114, 0.002296540584561568, 0.0016246508112774485, 0.0]
+K = [846.3299667778492, 0.0, 484.64291839114077, 0.0, 849.8903587888743, 363.0736508154193, 0.0, 0.0, 1.0]
+R = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+P = [852.0324096679688, 0.0, 485.58010602402646, 0.0, 0.0, 856.9440307617188, 363.75610541300375, 0.0, 0.0, 0.0, 1.0, 0.0]
+None
+# oST version 5.0 parameters
+
+
+[image]
+
+width
+960
+
+height
+720
+
+[narrow_stereo]
+
+camera matrix
+846.329967 0.000000 484.642918
+0.000000 849.890359 363.073651
+0.000000 0.000000 1.000000
+
+distortion
+0.077532 -0.167841 0.002297 0.001625 0.000000
+
+rectification
+1.000000 0.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 0.000000 1.000000
+
+projection
+852.032410 0.000000 485.580106 0.000000
+0.000000 856.944031 363.756105 0.000000
+0.000000 0.000000 1.000000 0.000000
+
+('Wrote calibration data to', '/tmp/calibrationdata.tar.gz')
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/home/ubuntu/catkin_ws/src/image_pipeline/camera_calibration/src/camera_calibration/camera_calibrator.py", line 107, in run
+    self.function(m)
+  File "/home/ubuntu/catkin_ws/src/image_pipeline/camera_calibration/src/camera_calibration/camera_calibrator.py", line 188, in handle_monocular
+    drawable = self.c.handle_msg(msg)
+  File "/home/ubuntu/catkin_ws/src/image_pipeline/camera_calibration/src/camera_calibration/calibrator.py", line 975, in handle_msg
+    undistorted = self.undistort_points(corners)
+  File "/home/ubuntu/catkin_ws/src/image_pipeline/camera_calibration/src/camera_calibration/calibrator.py", line 856, in undistort_points
+    return cv2.fisheye.undistortPoints(src, self.intrinsics, self.distortion, R = self.R, P = self.P)
+cv2.error: OpenCV(4.2.0) ../modules/calib3d/src/fisheye.cpp:331: error: (-215:Assertion failed) D.total() == 4 && K.size() == Size(3, 3) && (K.depth() == CV_32F || K.depth() == CV_64F) in function 'undistortPoints'
+
+**** Calibrating ****
+mono fisheye calibration...
+D = [0.0, 0.0, 0.0, 0.0]
+K = [305.5774907364391, 0.0, 479.5, 0.0, 305.5774907364391, 359.5, 0.0, 0.0, 1.0]
+R = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+P = [305.5774907364391, 0.0, 479.5, 0.0, 0.0, 305.5774907364391, 359.5, 0.0, 0.0, 0.0, 1.0, 0.0]
+None
+# oST version 5.0 parameters
+
+
+[image]
+
+width
+960
+
+height
+720
+
+[narrow_stereo]
+
+camera matrix
+305.577491 0.000000 479.500000
+0.000000 305.577491 359.500000
+0.000000 0.000000 1.000000
+
+distortion
+0.000000 0.000000 0.000000 0.000000
+
+rectification
+1.000000 0.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 0.000000 1.000000
+
+projection
+305.577491 0.000000 479.500000 0.000000
+0.000000 305.577491 359.500000 0.000000
+0.000000 0.000000 1.000000 0.000000
